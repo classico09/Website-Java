@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Login Homepage</title>
+        <title>Sign in</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -17,7 +17,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">Start Bootstrap</a>
+                <a class="navbar-brand" href="#!">Shop name</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -48,16 +48,33 @@
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">Membership</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Log in or registration for new membership</p>
+                    <p class="lead fw-normal text-white-50 mb-0">Sign in</p>
                 </div>
             </div>
         </header>
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    
-                </div>
+                <form action="" method="post" name="login">
+                    <div class="form-group">
+                       <label for="InputEmail">Email address</label>
+                       <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                       <label for="InputPassword">Password</label>
+                       <input type="password" name="password" id="password"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
+                    </div>
+                    <div class="col-md-12 ">
+                        <div class="sign-up/sign-in">
+                           <hr class="login">
+
+                        </div>
+                     </div>
+                    <div class="col-md-12 text-center ">
+                       <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Sign in</button>
+                       <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Sign up</button>
+                    </div>
+                 </form>
             </div>
         </section>
         <!-- Footer-->
