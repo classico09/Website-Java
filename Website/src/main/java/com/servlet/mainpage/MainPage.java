@@ -17,10 +17,15 @@ public class MainPage extends HttpServlet {
 		super.doGet(req, resp);
 	}
 
+
 	@Override
-	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		super.doPut(req, resp);
+		super.doPost(req, resp);
 	}
+	
+	
 		
 }
+
+
