@@ -39,7 +39,7 @@
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
-                <form action="register" method="get" name="registration">
+                <form action="register" method="get" name="registration" onsubmit="return validateForm()" required >
                     <div class="form-group">
                        <label for="inputName">Full name</label>
                        <input type="text"  name="full_name" class="form-control" id="fullName" aria-describedby="emailHelp" placeholder="이름">
@@ -70,7 +70,7 @@
                      </div>
                     <div class="col-md-12 text-center mb-3">
                        <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" value="register">Register</button>
-                       <button type="button" class=" btn btn-block mybtn btn-primary tx-tfm" value="cancel">Cancel</button>
+                       <button type="button" class=" btn btn-block mybtn btn-primary tx-tfm" value="cancel" onclick="/html/index.html">Cancel</button>
                     </div>
                      </div>
                  </form>
@@ -88,4 +88,3 @@
         <script src="../web/register.java"></script>
     </body>
 </html>
-
