@@ -39,18 +39,29 @@
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
-                <form action="register" name="registration">
+                <form action="register" method="get" name="registration">
                     <div class="form-group">
                        <label for="inputName">Full name</label>
-                       <input type="text"  name="lastname" class="form-control" id="fullname" aria-describedby="emailHelp" placeholder="Enter Lastname">
+                       <input type="text"  name="full_name" class="form-control" id="fullName" aria-describedby="emailHelp" placeholder="이름">
                     </div>
                     <div class="form-group">
                        <label for="inputEmail">Email address</label>
-                       <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                       <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="이메일">
                     </div>
+					<div class="dupli-check">
+						<button type="button">중복 확인 </button>
+					</div>
                     <div class="form-group">
                        <label for="inputPassword">Password</label>
-                       <input type="password" name="password" id="password"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
+                       <input type="password" name="password" id="password"  class="form-control" aria-describedby="emailHelp" placeholder="패스워드">
+                    </div>
+                    <div class="form-group">
+                       <label for="inputPassword">Confirm Password</label>
+                       <input type="password" name="confirm_password" id="confirmPassword"  class="form-control" aria-describedby="emailHelp" placeholder="패스워드 확인">
+                    </div>
+                    <div class="form-group">
+                       <label for="inputPhoneNumber">Phone number</label>
+                       <input type="number" name="phone_number" id="phoneNumber"  class="form-control" aria-describedby="emailHelp" placeholder="핸드폰 번호">
                     </div>
                     <div class="col-md-12 ">
                         <div class="sign-up">
@@ -58,8 +69,8 @@
                         </div>
                      </div>
                     <div class="col-md-12 text-center mb-3">
-                       <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Submit</button>
-                       <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Cancel</button>
+                       <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" value="register">Register</button>
+                       <button type="button" class=" btn btn-block mybtn btn-primary tx-tfm" value="cancel">Cancel</button>
                     </div>
                      </div>
                  </form>
@@ -77,3 +88,4 @@
         <script src="../web/register.java"></script>
     </body>
 </html>
+
