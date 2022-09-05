@@ -21,6 +21,10 @@ function validateForm(){
 		alert("Password must be confirmed!");
 		return false;	
 	}
+	else if(confirmPw!=pw) {
+		alert("Confirm password not match with password!");
+		return false;
+	}
 	else if(mobile==""){
 		alert("Phone number must be filled out!");
 		return false;	
