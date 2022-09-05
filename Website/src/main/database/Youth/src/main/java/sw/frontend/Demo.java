@@ -30,10 +30,10 @@ public class Demo {
 			System.out.format(leftAlignFormat, "5. Product-Delete by ID");// OK
 
 			System.out.format(leftAlignFormat, "6. Cart-Insert"); // OK
-			System.out.format(leftAlignFormat, "7. Cart-Select by Account ID"); // ==> làm lại, phải trả về list
+			System.out.format(leftAlignFormat, "7. Cart-Select by Account ID"); // OK
 			System.out.format(leftAlignFormat, "8. Cart-Delete by ID"); // OK
 
-			System.out.format(leftAlignFormat, "9. Exit");// bắt lỗi exception
+			System.out.format(leftAlignFormat, "9. Exit");
 			System.out.format("+--------------------------------------------------------------------------+%n");
 			switch (ScannerUltis.InuputIntPositive()) {
 //	Account		
@@ -44,21 +44,21 @@ public class Demo {
 				String passInput = "A1234567";
 				String nameInput = "duy2";
 				String mobileInput = "01011112222";
-				Account account = new Account();
 
-				account.setEmail(mailInput);
-				account.setFullName(nameInput);
-				account.setPassword(passInput);
-				account.setMobile(mobileInput);
+				Account account = new Account(mailInput, passInput, nameInput, mobileInput);
 
 				accountRepository.createAccount(account);
 				break;
 
 			case 2:
 				// case 2 sẽ là hàm mà mn lấy dữ liệu từ html xuống
-				String mail = "linh.dang@gmail.com";
-				String pass = "A1234567";
-				accountRepository.checkLogin(mail, pass);
+				String mail = "Account1@gmail.com";
+				String pass = "A123458";
+
+				Account account2 = new Account(mail, pass);
+
+				accountRepository.checkLogin(account2);
+
 				break;
 // Product
 			case 3:
@@ -67,12 +67,7 @@ public class Demo {
 				String image = "image3";
 				String detail = "detail3";
 
-				Product product = new Product();
-
-				product.setName(name);
-				product.setPrice(price);
-				product.setImage(image);
-				product.setDetail(detail);
+				Product product = new Product(name, price, image, detail);
 
 				productRepository.insertProduct(product);
 				break;
@@ -80,13 +75,10 @@ public class Demo {
 			case 4:
 				productRepository.ShowAllProduct();
 				break;
+
 			case 5:
-				int intInput = 1;
-
-				Product product1 = new Product();
-				product1.setId(intInput);
-
-				productRepository.deleteProductByID(product1);
+				int intInput = 3;
+				productRepository.deleteProductByID(intInput);
 				break;
 // Cart
 			case 6:
@@ -96,33 +88,21 @@ public class Demo {
 				String detail1 = "detail";
 				int accId = 1;
 
-				Cart cart = new Cart();
-
-				cart.setName(name1);
-				cart.setPrice(price1);
-				cart.setImage(image1);
-				cart.setDetail(detail1);
-				cart.setAccountID(accId);
+				Cart cart = new Cart(name1, price1, image1, detail1, accId);
 
 				cartRepository.InsertCart(cart);
 				break;
 
 			case 7:
 				int idAccount = 1;
+				cartRepository.getCartByAccountID(idAccount);
 
-				Cart cart1 = new Cart();
-
-				cart1.setId(idAccount);
-
-				cartRepository.getCartByAccountID(cart1);
 				break;
+
 			case 8:
 				int idDelete = 1;
 
-				Cart cart2 = new Cart();
-				cart2.setId(idDelete);
-
-				cartRepository.deleteCartByID(cart2);
+				cartRepository.deleteCartByID(idDelete);
 				break;
 			case 9:
 				return;

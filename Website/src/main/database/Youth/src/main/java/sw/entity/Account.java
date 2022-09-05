@@ -37,10 +37,17 @@ public class Account implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Account(String email, String fullName, String password) {
+	public Account(String email, String fullName, String password, String mobile) {
 		super();
 		this.email = email;
 		this.fullName = fullName;
+		this.password = password;
+		this.mobile = mobile;
+	}
+
+	public Account(String email, String password) {
+		super();
+		this.email = email;
 		this.password = password;
 	}
 

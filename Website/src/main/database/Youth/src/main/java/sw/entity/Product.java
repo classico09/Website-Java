@@ -34,14 +34,17 @@ public class Product implements Serializable {
 	@Column(name = "Detail", length = 500)
 	private String detail;
 
-//	@ManyToOne
-//	@MapsId("ProductID")
-//	@JoinColumn(name = "ProductID")
-//	private Cart cart;
-
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public Product(String name, double price, String image, String detail) {
+		super();
+		this.name = name;
+		this.price = price;
+		this.image = image;
+		this.detail = detail;
 	}
 
 	public int getId() {
