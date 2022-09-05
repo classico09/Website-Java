@@ -1,5 +1,6 @@
 package sw.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -34,44 +35,45 @@ public class ProductRepository {
 
 			System.out.println(product.toString());
 
-			return product;
-		} finally {
-			if (session != null) {
-				session.close();
-			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		if (session != null) {
+			session.close();
+		}
+		return product;
 	}
 
 // 4. Product-Select All > OK
 
 	public List<Product> ShowAllProduct() {
 		Session session = null;
-		Product product = new Product();
+		List<Product> products = new ArrayList<Product>();
 		try {
 			session = hibernateUtils.openSession();
 			@SuppressWarnings("unchecked")
 			Query<Product> query = session.createQuery("FROM Product ORDER BY ProductID");
-			List<Product> products = query.list();
+			products = query.list();
 
 			for (Product product2 : products) {
 				System.out.println(product2.toString());
 			}
 
-			return products;
-
-		} finally {
-			if (session != null) {
-				session.close();
-			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		if (session != null) {
+			session.close();
+		}
+		return products;
 
 	}
 
 // 5. Product-Delete by ID ==> OK
 
-	public Product deleteProductByID(Product product1) {
+	public int deleteProductByID(int intInput) {
 		Session session = null;
-
+		int checkDeleteProduct = 0;
 		try {
 
 			// get session
@@ -81,19 +83,19 @@ public class ProductRepository {
 			String hql = "DELETE FROM Product WHERE ProductID = :idParameter";
 			Query query = session.createQuery(hql);
 
-			query.setParameter("idParameter", product1);
-			int affectedRows = query.executeUpdate();
-
-			System.out.println(product1.toString());
-
-			return product1;
-
-		} finally {
-			if (session != null) {
-				session.close();
-
+			query.setParameter("idParameter", intInput);
+			checkDeleteProduct = query.executeUpdate();
+			if (checkDeleteProduct == 1) {
+				System.out.println("Delete success Product by id = " + intInput);
+			} else {
+				System.out.println("Can not find cart by id = " + intInput);
 			}
-
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		if (session != null) {
+			session.close();
+		}
+		return intInput;
 	}
 }

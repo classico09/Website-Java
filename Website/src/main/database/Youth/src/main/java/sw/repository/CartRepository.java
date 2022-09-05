@@ -1,5 +1,8 @@
 package sw.repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -31,19 +34,19 @@ public class CartRepository {
 			session.getTransaction().commit();
 			System.out.println(cart.toString());
 
-			return cart;
-
-		} finally {
-			if (session != null) {
-				session.close();
-			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
+		if (session != null) {
+			session.close();
+		}
+		return cart;
 	}
 
-// 7. Cart-Select by Account ID   ==> làm lại, phải trả về list
-	public Cart getCartByAccountID(Cart cart1) {
+// 7. Cart-Select by Account ID   ==> OK
+	public List<Cart> getCartByAccountID(int accountId) {
 		Session session = null;
+		List<Cart> carts = new ArrayList<Cart>();
 
 		try {
 
@@ -53,24 +56,28 @@ public class CartRepository {
 			String hql = "FROM Cart WHERE AccountID = :idParameter";
 			Query<Cart> query = session.createQuery(hql, Cart.class);
 
-			query.setParameter("idParameter", cart1);
+			query.setParameter("idParameter", accountId);
 
-			Cart cart11 = query.uniqueResult();
-			System.out.println(cart11.toString());
+			carts = query.list();
+			for (Cart cart : carts) {
 
-			return cart11;
-
-		} finally {
-			if (session != null) {
-				session.close();
+				System.out.println(cart.toString());
 			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		if (session != null) {
+			session.close();
+		}
+		return carts;
 	}
 
 // 8. Cart-Delete by ID ==> OK
-	public Cart deleteCartByID(Cart cart2) {
+	public int deleteCartByID(int idDelete) {
 		Session session = null;
 
+		int checkDeleteCart = 0;
 		try {
 
 			// get session
@@ -80,17 +87,22 @@ public class CartRepository {
 			String hql = "DELETE FROM Cart WHERE CartID = :idParameter";
 			Query query = session.createQuery(hql);
 
-			query.setParameter("idParameter", cart2);
-			int affectedRows = query.executeUpdate();
+			query.setParameter("idParameter", idDelete);
+			checkDeleteCart = query.executeUpdate();
 
-			System.out.println(cart2.toString());
-
-			return cart2;
-
-		} finally {
-			if (session != null) {
-				session.close();
+			if (checkDeleteCart == 1) {
+				System.out.println("Delete success cart by id = " + idDelete);
+			} else {
+				System.out.println("Can not find cart by id = " + idDelete);
 			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		if (session != null) {
+			session.close();
+		}
+		return checkDeleteCart;
+
 	}
 }

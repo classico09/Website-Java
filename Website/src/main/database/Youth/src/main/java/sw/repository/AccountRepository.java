@@ -29,43 +29,43 @@ public class AccountRepository {
 			session.save(account);
 
 			session.getTransaction().commit();
-			System.out.println("Create thành công");
+			System.out.println("Create success account!");
 
 		} catch (Exception e) {
-			if (session != null) {
-
-				session.close();
-			}
+			e.printStackTrace();
+		}
+		if (session != null) {
+			session.close();
 		}
 		return account;
 	}
 
 // 2. Account-Đăng nhập{check login} ==> OK
 
-	public Account checkLogin(String mail, String pass) {
+	public Account checkLogin(Account account2) {
 		Session session = null;
 
-		String mailInput = mail;
-		String passInput = pass;
-
+		Account account = new Account();
 		try {
 			session = hibernateUtils.openSession();
-			String hqlSelect = "FROM Account WHERE email= :emailParan AND password= :passParan";
+			String hql = "FROM Account WHERE email= :emailParan AND password= :passParan";
 
-			Query<Account> querrySelect = session.createQuery(hqlSelect);
+			Query<Account> querrySelect = session.createQuery(hql);
 
-			querrySelect.setParameter("emailParan", mailInput);
-			querrySelect.setParameter("passParan", passInput);
-			System.out.println(querrySelect);
+			querrySelect.setParameter("emailParan", account2.getEmail());
+			querrySelect.setParameter("passParan", account2.getPassword());
 
-			Account account = querrySelect.uniqueResult();
+			account = querrySelect.uniqueResult(); // hung ket qua sau khi tim duoi db
 
-			System.out.println("login thành công");
-			return account;
+			System.out.println("Login success, welcome " + account.getFullName());
 
-		} finally {
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+		if (session != null) {
 			session.close();
 		}
+		return account;
 	}
-
 }

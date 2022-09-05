@@ -49,9 +49,8 @@ public class Cart implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cart(int id, String name, double price, String image, String detail, int accountID) {
+	public Cart(String name, double price, String image, String detail, int accountID) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.image = image;
