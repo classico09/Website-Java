@@ -7,7 +7,6 @@ import org.hibernate.query.Query;
 
 import sw.entity.Product;
 import sw.ultis.HibernateUtils;
-import sw.ultis.ScannerUltis;
 
 public class ProductRepository {
 	private static final String String = null;
@@ -20,20 +19,8 @@ public class ProductRepository {
 
 // 3. Product-Insert ==> OK
 
-	public Product insertProduct() {
+	public Product insertProduct(Product product) {
 		Session session = null;
-		Product product = new Product();
-		System.out.println("Product Name");
-		product.setName(ScannerUltis.inuputString());
-
-		System.out.println("Price");
-		product.setPrice(ScannerUltis.InuputDouble());
-
-		System.out.println("Image");
-		product.setImage(ScannerUltis.inuputString());
-
-		System.out.println("Detail");
-		product.setDetail(ScannerUltis.inuputString());
 
 		try {
 			// get session
@@ -55,7 +42,7 @@ public class ProductRepository {
 		}
 	}
 
-// 4. Product-Select All > chưa chạy được 
+// 4. Product-Select All > OK
 
 	public List<Product> ShowAllProduct() {
 		Session session = null;
@@ -80,29 +67,33 @@ public class ProductRepository {
 
 	}
 
-// 5. Product-Delete by ID > bỏ tham số truyền vào ntn?
+// 5. Product-Delete by ID ==> OK
 
-	public Product deleteProductByID(int intInput) {
+	public Product deleteProductByID(Product product1) {
 		Session session = null;
 
-		System.out.println("Nhập vào ID Product cần xóa");
-		int idFind = ScannerUltis.InuputIntPositive();
-
-		session.beginTransaction();
 		try {
-			Product product = session.load(Product.class, idFind);
 
-			session.delete(product);
-			session.getTransaction().commit();
+			// get session
+			session = hibernateUtils.openSession();
+			session.beginTransaction();
 
-			return product;
+			String hql = "DELETE FROM Product WHERE ProductID = :idParameter";
+			Query query = session.createQuery(hql);
+
+			query.setParameter("idParameter", product1);
+			int affectedRows = query.executeUpdate();
+
+			System.out.println(product1.toString());
+
+			return product1;
+
 		} finally {
 			if (session != null) {
 				session.close();
+
 			}
 
 		}
-
 	}
-
 }
