@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -27,8 +26,11 @@ public class Account implements Serializable {
 	@Column(name = "Password", length = 100)
 	private String password;
 
-	@OneToOne(mappedBy = "account")
-	private Cart cart;
+	@Column(name = "Mobile", length = 11)
+	private String mobile;
+
+//	@OneToOne(mappedBy = "account")
+//	private Cart cart;
 
 	public Account() {
 		super();
@@ -74,17 +76,18 @@ public class Account implements Serializable {
 		this.password = password;
 	}
 
-	public Cart getCart() {
-		return cart;
+	public String getMobile() {
+		return mobile;
 	}
 
-	public void setCart(Cart cart) {
-		this.cart = cart;
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
 
 	@Override
 	public String toString() {
-		return "Account [id=" + id + ", email=" + email + ", fullName=" + fullName + ", password=" + password + "]";
+		return "Account [id=" + id + ", email=" + email + ", fullName=" + fullName + ", password=" + password
+				+ ", mobile=" + mobile + "]";
 	}
 
 }

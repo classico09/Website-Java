@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -36,9 +34,12 @@ public class Cart implements Serializable {
 	@Column(name = "Detail", length = 500)
 	private String detail;
 
-	@OneToOne
-	@JoinColumn(name = "AccountID", referencedColumnName = "AccountID")
-	private Account account;
+	@Column(name = "AccountID")
+	private int accountID;
+
+//	@OneToOne
+//	@JoinColumn(name = "AccountID", referencedColumnName = "AccountID")
+//	private Account account;
 
 //	@OneToMany(mappedBy = "cart")
 //	private List<Product> products;
@@ -48,13 +49,14 @@ public class Cart implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cart(String name, double price, String image, String detail, Account account) {
+	public Cart(int id, String name, double price, String image, String detail, int accountID) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.image = image;
 		this.detail = detail;
-		this.account = account;
+		this.accountID = accountID;
 	}
 
 	public int getId() {
@@ -97,16 +99,18 @@ public class Cart implements Serializable {
 		this.detail = detail;
 	}
 
-	public Account getAccount() {
-		return account;
+	public int getAccountID() {
+		return accountID;
 	}
 
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setAccountID(int accountID) {
+		this.accountID = accountID;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	@Override
+	public String toString() {
+		return "Cart [id=" + id + ", name=" + name + ", price=" + price + ", image=" + image + ", detail=" + detail
+				+ ", accountID=" + accountID + "]";
 	}
 
 }
