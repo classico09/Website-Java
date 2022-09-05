@@ -1,12 +1,12 @@
 package com.servlet.mainpage;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 @WebServlet("/homepage")
 public class MainPage extends HttpServlet {
@@ -23,6 +23,9 @@ public class MainPage extends HttpServlet {
 		doGet(req, resp);
 	}
 	
+	public void getProduct() {
+		
+	}
 	
 		
 }
