@@ -39,7 +39,7 @@
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
-                <form action="register" method="get" name="registration" onsubmit="return validateForm()" required >
+                <form action="register" method="post" name="registration" onsubmit="return validateForm()" required >
                     <div class="form-group">
                        <label for="inputName">Full name</label>
                        <input type="text"  name="full_name" class="form-control" id="fullName" aria-describedby="emailHelp" placeholder="이름">
@@ -48,9 +48,6 @@
                        <label for="inputEmail">Email address</label>
                        <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="이메일">
                     </div>
-					<div class="dupli-check">
-						<button type="button">중복 확인 </button>
-					</div>
                     <div class="form-group">
                        <label for="inputPassword">Password</label>
                        <input type="password" name="password" id="password"  class="form-control" aria-describedby="emailHelp" placeholder="패스워드">
@@ -70,7 +67,7 @@
                      </div>
                     <div class="col-md-12 text-center mb-3">
                        <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" value="register">Register</button>
-                       <button type="button" class=" btn btn-block mybtn btn-primary tx-tfm" value="cancel" onclick="/html/index.html">Cancel</button>
+                       <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" value="cancel" formaction="index.html">Cancel</button>
                     </div>
                      </div>
                  </form>
