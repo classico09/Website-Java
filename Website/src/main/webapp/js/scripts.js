@@ -3,7 +3,7 @@ function validateForm(){
 	var email = document.forms["registration"]["email"].value;
 	var pw = document.forms["registration"]["password"].value;
 	var confirmPw = document.forms["registration"]["confirm_password"].value;
-	var mobile = document.forms["registration"]["phone_number"].value;
+	var mobile = document.forms["registration"]["mobile"].value;
 	
 	if(name==""){
 		alert("Name must be filled out!");
